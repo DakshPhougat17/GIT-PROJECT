@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Quote Generator in JavaScript</title>
+    <link rel="stylesheet" href="Working.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <!-- Add a filter button and a styled dropdown container -->
+<div class="filter-container">
+    <button class="filter-btn" onclick="toggleFilterOptions()">Filter Your Quotes Here</button>
+    <div class="filter-options" id="filterOptions">
+        <!-- Category dropdown -->
+        <label for="category">Filter by Category:</label>
+        <select id="category" onchange="filterQuotesByCategory(this.value)">
+            <option value="all">All Categories</option>
+            <option value="inspiration">Inspiration</option>
+            <option value="motivation">Motivation</option>
+            <option value="love">Love</option>
+            <option value="success">Success</option>
+        </select>
+        <!-- Author dropdown -->
+        <label for="author">Filter by Author:</label>
+        <select id="author" onchange="filterQuotesByAuthor(this.value)">
+            <option value="all">All Authors</option>
+            <option value="Mary Kay Ash">Mary Kay Ash</option>
+            <option value="Albert Einstein">Albert Einstein</option>
+            <option value="William Shakespeare">William Shakespeare</option>
+        
+        </select>
+    </div>
+</div>
+
+        </select>
+    </div>
+    <div class="navbar">
+        
+        <a href="#">Home</a>
+        <a id="aboutuslink" href="http://127.0.0.1:5500/FRONTEND.py/about.html">About</a>
+        <a id="contactuslink" href="http://127.0.0.1:5500/FRONTEND.py/contact.html">Contact Us</a>
+        <button class="btnLogin-popup" onclick="openLoginPopup()">Login</button>
+        
+        <div id="profileIcon" style="display: none;">
+            <button class="btnProfile-popup" onclick="openProfilePage()">
+                <i class="fas fa-user-circle" style="font-size: 40px;"></i>
+            </button>
+            
+            
+        </div>
+    </div>
+    <div class="wrapper">
+        <header>Quote of the Day</header>
+        <div class="content">
+            <div class="quote-area">
+                <i class="fas fa-quote-left"></i>
+                <p class="quote">Never give up because you never know if the next try is going to be the one that works.</p>
+                <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="author">
+                <span>__</span>
+                <span class="name">Mary Kay Ash</span>
+            </div>
+        </div>
+        <div class="buttons">
+            <div class="features">
+                <ul>
+                    <li class="speech"><i class="fas fa-volume-up"></i></li>
+                    <li class="copy"><i class="fas fa-copy"></i></li>
+                    <li class="twitter"><i class="fab fa-twitter"></i></li>
+                        </ul>
+                    </li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button>New Quote</button>
+            </div>
+        </div>
+    </div>
+<!-- Updated Login Popup HTML -->
+<div class="login-popup" id="loginPopup">
+    <div class="popup-content">
+        <span class="close-popup" onclick="closeLoginPopup()">&times;</span>
+        <h2>Login</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" pattern="[^@\s]+@[^@\s]+" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="options">
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <a href="#" class="forgot-password" onclick="openForgotPasswordPopup()">Forgot Password?</a>
+            </div>
+            <button type="button" onclick="submitLogin()">Login</button>
+        </form>
+        <p>Need an account? <a href="#" class="signup-link" onclick="openSignupPopup()">Sign up</a></p>
+    </div>
+</div>
+
+<!-- Updated Forgot Password Popup HTML -->
+<div class="forgot-password-popup" id="forgotPasswordPopup">
+    <div class="popup-content">
+        <span class="close-popup" onclick="closeForgotPasswordPopup()">&times;</span>
+        <h2>Reset your password</h2>
+        <form>
+            <div class="form-group">
+                <label for="resetEmail">Email:</label>
+                <input type="email" id="resetEmail" name="resetEmail" required>
+            </div>
+            <button type="button" onclick="resetPassword()">Reset password</button>
+        </form>
+        <p>Return to <a href="#" class="login-link" onclick="closeForgotPasswordPopup(); openLoginPopup()">login</a></p>
+    </div>
+</div>
+
+<!-- Updated Signup Popup HTML -->
+<div class="signup-popup" id="signupPopup">
+    <div class="popup-content">
+        <span class="close-popup" onclick="closeSignupPopup()">&times;</span>
+        <h2>Sign Up</h2>
+        <form>
+            <div class="form-group">
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" name="signupEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Password:</label>
+                <input type="password" id="signupPassword" name="signupPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
+                <small>One lowercase character, one uppercase character, one number, one special character, 8 characters minimum</small>
+            </div>
+            <button type="button" onclick="submitSignup()">Sign Up for free</button>
+        </form>
+        <p>Already have an account? <a href="#" class="login-link" onclick="closeSignupPopup(); openLoginPopup()">Log in</a></p>
+    </div>
+</div>
+
+    <!-- Profile popup -->
+    <div class="profile-popup" id="profilePopup">
+        <span class="close-popup" onclick="closeProfilePopup()">&times;</span>
+        <h2>Profile</h2>
+        <form>
+            <label for="profileUsername">Username:</label>
+            <input type="text" id="profileUsername" name="profileUsername" required>
+            <label for="profileEmail">Email:</label>
+            <input type="email" id="profileEmail" name="profileEmail" required>
+            <button type="button" onclick="saveProfile()">Save Profile</button>
+        </form>
+    </div>
+
+
+    <script src="Working.js"></script>
+</body>
+</html>
