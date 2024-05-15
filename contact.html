@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">  
+    <title>Contact Us - Your Company</title>
+    <link rel="stylesheet" href="contact.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}">
+</head>
+<body>
+    <div class="back-btn-container">
+        <a href="http://127.0.0.1:5500/FRONTEND.py/Working.html" class="back-btn">&lt; Back to Home</a>
+    </div>
+    
+    <div class="contact-wrapper">
+        <div class="contact-container">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you. Please feel free to get in touch with us.</p>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <form action="{{ url_for('send_email') }}" method="post"> 
+        </form>
+    <footer>
+        <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>
